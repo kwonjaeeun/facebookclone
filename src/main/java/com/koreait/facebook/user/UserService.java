@@ -33,5 +33,6 @@ public class UserService {
         String text="내용 <a href='http://localhost:8090/user/login'>sss</a>";
         email.sendMineMessage(to,sub,text);
     }
+    // 안녕하세요
 
 }
