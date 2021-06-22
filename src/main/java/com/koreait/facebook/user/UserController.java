@@ -27,4 +27,9 @@ public class UserController {
         return "redirect:/feed/home";
     };
 
+    @GetMapping("/mail")
+    public String email(){
+        service.sendEmail();
+        return "";
+    }
 }
