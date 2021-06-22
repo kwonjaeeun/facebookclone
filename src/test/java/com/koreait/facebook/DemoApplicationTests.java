@@ -34,5 +34,6 @@ class DemoApplicationTests {
         assertNotEquals(val,val2);
         System.out.println("1:"+val);
         System.out.println("2:"+val2);
+        System.out.println("dd");
     }
 }
