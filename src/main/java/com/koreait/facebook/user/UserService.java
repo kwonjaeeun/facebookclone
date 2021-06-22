@@ -24,15 +24,15 @@ public class UserService {
         param.setPw(hashedPw);
         param.setAuthCd(rVal);
         int result=mapper.join(param);
-
+        if(result ==1){
+            String subject ="[얼굴책]인증 메일입니다.";
+            String text=String.format("<a href=\"http://localhost:8090/user/auth?email=%s&authCd=%s\">인증하기</a>",param.getEmail(),param.getAuthCd());
+            email.sendMineMessage(param.getEmail(),subject,text);
+        }
         return 0;
     }
-    public void sendEmail(){
-        String to="dino218@naver.com";
-        String sub="제목";
-        String text="내용 <a href='http://localhost:8090/user/login'>sss</a>";
-        email.sendMineMessage(to,sub,text);
-    }
-    // 안녕하세요
 
+    public int setAuth(UserEntity param) {
+        return mapper.setAuth(param);
+    }
 }
