@@ -1,6 +1,7 @@
 package com.koreait.facebook.user;
 
 import com.koreait.facebook.common.EmailServiceImpl;
+import com.koreait.facebook.common.MySecurityUtils;
 import com.koreait.facebook.user.model.UserEntity;
 import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,10 +15,17 @@ public class UserService {
     @Autowired
     private EmailServiceImpl email;
 
+    @Autowired
+    private MySecurityUtils secUtils;
+
     public int join(UserEntity param){
-    String hashedPw = BCrypt.hashpw(param.getPw(),BCrypt.gensalt());
-    param.setPw(hashedPw);
-    return mapper.join(param);
+        String  rVal= secUtils.getRandomValues(5);
+        String hashedPw = BCrypt.hashpw(param.getPw(),BCrypt.gensalt());
+        param.setPw(hashedPw);
+        param.setAuthCd(rVal);
+        int result=mapper.join(param);
+
+        return 0;
     }
     public void sendEmail(){
         String to="dino218@naver.com";
