@@ -12,4 +12,9 @@
         update t_user set authCd = null
         where email = #{email} and authCd = #{authCd}
     </update>
+    <select id="selUser" resultType="UserEntity">
+        SELECT * from  t_user
+        where email=#{email}
+        and authCd is NULL
+    </select>
 </mapper>

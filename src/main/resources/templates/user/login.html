@@ -11,10 +11,12 @@
     <div th:if="${#request.getParameter('auth')=='1'}"th:text="인증성공"></div>
     <div th:if="${#request.getParameter('needAuth')=='1'}" th:text="이메일인증필요"></div>
     <div th:if="${#request.getParameter('auth')!= null and #request.getParameter('auth')!='1'}"th:text="인증실패"></div>
+    <div th:if="${param.error}">로그인에 실패하였습니다</div>
     <h1>login</h1>
     <form th:action="@{login}" method="post" th:object="${userEntity}">
         <div><input type="email" th:field="*{email}" placeholder="email" autofocus required></div>
         <div><input type="password" th:field="*{pw}" placeholder="password" required></div>
+        <div><input type="submit" th:value="로그인"></div>
     </form>
     <div>
         <a th:href="@{join}">회원가입</a>
