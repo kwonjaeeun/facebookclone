@@ -1,6 +1,7 @@
 package com.koreait.facebook.security;
 
 import com.koreait.facebook.user.model.UserEntity;
+import lombok.Getter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -9,7 +10,7 @@ import java.util.Collection;
 
 public class UserDetailsImpl implements UserDetails {
 
-
+    @Getter
     private UserEntity user;
     public UserDetailsImpl(UserEntity user){
         this.user=user;

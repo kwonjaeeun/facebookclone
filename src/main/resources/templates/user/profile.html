@@ -9,8 +9,10 @@
 
 <th:block layout:fragment="content">
   <form th:action="@{profileImg}" method="post" enctype="multipart/form-data">
-    <div>이미지 : <input type="file" name="imgArr" multiple accept="image/*"></div>
-    <input type="submit" value="업로드">
+    <div>
+      이미지 : <input type="file" name="imgArr" multiple accept="image/*">
+      <input type="submit" value="업로드">
+    </div>
   </form>
 </th:block>
 </html>

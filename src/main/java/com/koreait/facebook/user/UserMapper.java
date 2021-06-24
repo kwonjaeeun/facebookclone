@@ -9,4 +9,5 @@ public interface UserMapper {
     int join(UserEntity param);
     int setAuth(UserEntity param);
     UserEntity selUser(UserEntity param);
+    int updUser(UserEntity param);
 }
