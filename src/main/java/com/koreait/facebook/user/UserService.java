@@ -11,6 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.util.List;
+
 @Service
 public class UserService {
     @Autowired
@@ -72,5 +74,14 @@ public class UserService {
                 }
             }
         }
+    }
+
+    public List<UserProfileEntity> selUserProfileList(UserEntity param) {
+        return profileMapper.selUserProfileList(param);
+    }
+    //메인 이미지 변경
+    public int updUserMainProfile(UserProfileEntity param) {
+        param.setIuser(auth.getLoginUserPk());
+        return mapper.updUserMainProfile(param);
     }
 }

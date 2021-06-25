@@ -43,12 +43,21 @@ nav {
     height: 100%;
     align-items: center;
 }
+.header__right .menus li { flex-grow: 1; }
 
-.header__right .menus li {
-    flex-grow: 1;
-}
 
 #container {
     margin-top: 80px;
     padding: 30px;
 }
+.pointer { cursor: pointer; }
+.hide { display: none; }
+.modal { z-index: 100; position: fixed; top: 0; left: 0; height: 100%; width: 100%; background-color: rgba(0, 0, 0, 0.87);}
+
+.modal_close_parent { display: flex; justify-content: flex-end; padding: 40px 60px; }
+.modal_close { color: white; font-size: 50px; cursor: pointer; }
+
+.profile { border-radius: 50%; }
+.w50 { width: 50px; }
+.w200 { width: 200px; }
+.w300 { width: 300px; }
