@@ -27,8 +27,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     }
     @Override
     public  void configure(WebSecurity web)throws Exception{
-        web.ignoring().antMatchers("/pic/**","/css/**","/js/**","/img/**","/error","favicon.io","/resources/**");
-    }
+        web.ignoring().antMatchers("/pic/**", "/css/**", "/js/**", "/img/**", "/error", "favicon.ico");    }
     @Override
     protected  void configure(HttpSecurity http)throws Exception{
         http.csrf().disable();
