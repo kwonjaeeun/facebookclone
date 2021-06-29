@@ -28,11 +28,9 @@ function changeMainProfile(iprofile) {
         .then(myJson => {
             switch(myJson.result) {
                 case 0:
-                    alert('메인 이미지 변경에 실패하였습니다.');
-                    break;
+                    alert('메인 이미지 변경에 실패하였습니다.'); break;
                 case 1:
                     setMainProfileIcon(iprofile);
-
                     //section에 있는 프로필 이미지 변경
                     const src = profileImgElem.src;
                     const frontSrc = src.substring(0, src.lastIndexOf("/"));
@@ -46,6 +44,7 @@ function changeMainProfile(iprofile) {
             }
         });
 }
+
 //현재 mainProfile로 바뀐 iprofile값 입니다.
 function setMainProfileIcon(iprofile) {
     profileImgParentList.forEach(item => {
