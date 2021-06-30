@@ -1,13 +1,18 @@
 package com.koreait.facebook.user;
 
+import com.koreait.facebook.common.EmailService;
 import com.koreait.facebook.common.EmailServiceImpl;
 import com.koreait.facebook.common.MyFileUtils;
 import com.koreait.facebook.common.MySecurityUtils;
+import com.koreait.facebook.feed.FeedMapper;
+import com.koreait.facebook.feed.model.FeedDTO;
+import com.koreait.facebook.feed.model.FeedDomain2;
 import com.koreait.facebook.security.IAuthenticationFacade;
 import com.koreait.facebook.user.model.UserEntity;
 import com.koreait.facebook.user.model.UserProfileEntity;
 import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -17,23 +22,14 @@ import java.util.Map;
 
 @Service
 public class UserService {
-    @Autowired
-    private  UserMapper mapper;
-
-    @Autowired
-    private EmailServiceImpl email;
-
-    @Autowired
-    private MySecurityUtils secUtils;
-
-    @Autowired
-    private UserProfileMapper profileMapper;
-
-    @Autowired
-    private IAuthenticationFacade auth;
-
-    @Autowired
-    private MyFileUtils myFileUtils;
+    @Autowired private EmailService email;
+    @Autowired private MySecurityUtils secUtils;
+    @Autowired private PasswordEncoder passwordEncoder;
+    @Autowired private IAuthenticationFacade auth;
+    @Autowired private MyFileUtils myFileUtils;
+    @Autowired private UserMapper mapper;
+    @Autowired private FeedMapper feedMapper;
+    @Autowired private UserProfileMapper profileMapper;
 
     public int join(UserEntity param){
         String  rVal= secUtils.getRandomValues(5);
@@ -95,5 +91,9 @@ public class UserService {
         res.put("result", result);
         res.put("img", param.getImg());
         return res;
+    }
+    public List<FeedDomain2> selFeedList2(FeedDTO param) {
+        param.setIuser(auth.getLoginUserPk());
+        return feedMapper.selFeedList2(param);
     }
 }
