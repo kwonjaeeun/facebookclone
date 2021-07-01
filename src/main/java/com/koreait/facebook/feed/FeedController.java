@@ -1,10 +1,7 @@
 package com.koreait.facebook.feed;
 
 import com.koreait.facebook.common.MyConst;
-import com.koreait.facebook.feed.model.FeedDTO;
-import com.koreait.facebook.feed.model.FeedDomain;
-import com.koreait.facebook.feed.model.FeedDomain2;
-import com.koreait.facebook.feed.model.FeedEntity;
+import com.koreait.facebook.feed.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -47,5 +44,14 @@ public class FeedController {
     @GetMapping("/list2")
     public List<FeedDomain2> selFeedList2(FeedDTO param) {
         return service.selFeedList2(param);
+
     }
+    @ResponseBody
+    @GetMapping("/fav")
+    public int favProc(FeedFavEntity param, int type) {//type=1 ins type=0 del
+        return service.feedFavProc(param,type);
+    }
+
+
+
 }
