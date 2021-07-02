@@ -45,4 +45,13 @@ public class FeedService {
         }
         return mapper.delFeedFav(param);
     }
+    public int insFeedCmt(FeedCmtEntity param){
+        param.setIuser(auth.getLoginUserPk());
+        System.out.println(param);
+        return mapper.insFeedCmt(param);
+    }
+
+    public List<FeedCmtDomain> selFeedCmtList(FeedCmtEntity param) {
+        return mapper.selFeedCmtList(param);
+    }
 }

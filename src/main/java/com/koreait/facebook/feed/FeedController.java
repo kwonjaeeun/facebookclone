@@ -4,10 +4,7 @@ import com.koreait.facebook.common.MyConst;
 import com.koreait.facebook.feed.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.HashMap;
@@ -52,6 +49,15 @@ public class FeedController {
         return service.feedFavProc(param,type);
     }
 
-
+    @ResponseBody
+    @PostMapping("/cmt")
+    public int feedCmt(@RequestBody FeedCmtEntity param){
+        return service.insFeedCmt(param);
+    }
+    @ResponseBody
+    @GetMapping("/cmt")
+    public List<FeedCmtDomain> feedCmtList(FeedCmtEntity param){
+        return service.selFeedCmtList(param);
+    }
 
 }

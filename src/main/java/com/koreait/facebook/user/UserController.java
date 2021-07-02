@@ -30,6 +30,7 @@ public class UserController {
 
     @GetMapping("/login")
     public void login(@ModelAttribute UserEntity userEntity){
+        userEntity.setEmail("dino218@naver.com");
     };
 
 
